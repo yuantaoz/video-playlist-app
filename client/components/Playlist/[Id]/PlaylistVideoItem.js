@@ -16,46 +16,45 @@ const PlaylistVideoItem = ({ playlistId, video, setVideoId }) => {
     }
 
     return (
-        <div className='flex bg-white shadow-lg rounded-lg'>
+        <div className='flex bg-white shadow-lg rounded-lg h-32'>
             <div className='flex-none flex items-center'>
                 <ReorderIcon />
             </div>
-            <div className='grid grid-cols-12 py-2'>
-                <div className='col-span-2 md:col-span-2 flex items-center justify-center relative'>
-                    <img 
-                        src={video.thumbnail_url} 
-                        alt={video.title} 
-                        className='object-cover rounded-md cursor-pointer'
-                    />
-                </div>
-                <div className='col-span-9 md:col-span-9 px-4 py-2'>
-                    <Link href={`${YOUTUBE_BASE_URL}/${video.video_id}`} >
-                        <h2 
-                            className='transition duration-100 cursor-pointer hover:text-purple-700
-                                    line-clamp-2 text-md font-sans font-semibold mb-1'
-                        >
-                            {video.title}
-                        </h2>
-                    </Link>
-                    <p className="font-light text-xs mb-1">
-                        {video.views ? video.views.toLocaleString() : "0"} views
-                    </p>
-                    <Link href={`${YOUTUBE_BASE_URL}/${video.video_id}`}>
-                        <p className="transition duration-100 cursor-pointer hover:text-purple-700
-                                    line-clamp-3 text-sm font-sans mb-2"
-                        >
-                            {video.description}
-                        </p>
-                    </Link>
-                </div>
-                <div className='col-span-1 flex items-center justify-center relative'>
-                    <DeleteButton 
-                        className="w-5 h-5 mr-2 text-violet-400" 
-                        aria-hidden="true" 
-                        onClick={handleRemove}
-                    />
-                </div>
+            <div className='flex-none flex items-center justify-center w-36 relative'>
+                <img 
+                    src={video.thumbnail_url} 
+                    alt={video.title} 
+                    className='object-cover rounded-md w-36 cursor-pointer'
+                />
             </div>
+            <div className='flex-auto col-span-9 md:col-span-9 px-4 py-2 overflow-hidden'>
+                <Link href={`${YOUTUBE_BASE_URL}/${video.video_id}`} >
+                    <h2 
+                        className='transition duration-100 cursor-pointer hover:text-purple-700
+                                line-clamp-1 text-md font-sans font-semibold mb-1'
+                    >
+                        {video.title}
+                    </h2>
+                </Link>
+                <p className="font-light text-xs mb-1">
+                    {video.views ? video.views.toLocaleString() : "0"} views
+                </p>
+                <Link href={`${YOUTUBE_BASE_URL}/${video.video_id}`}>
+                    <p className="transition duration-100 cursor-pointer hover:text-purple-700
+                                line-clamp-3 text-sm font-sans"
+                    >
+                        {video.description}
+                    </p>
+                </Link>
+            </div>
+            <div className='flex-none flex items-center justify-center relative'>
+                <DeleteButton 
+                    className="w-5 h-5 mr-2 text-violet-400" 
+                    aria-hidden="true" 
+                    onClick={handleRemove}
+                />
+            </div>
+            
         </div>
     );
 }
