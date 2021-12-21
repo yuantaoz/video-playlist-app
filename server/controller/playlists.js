@@ -48,7 +48,7 @@ export const addVideo = async (req, res) => {
     const { id: _id } = req.params;
     const video = req.body;
 
-    console.log(video);
+    // console.log(video);
 
     if (!mongoose.Types.ObjectId.isValid(_id)) {
         return res.status(404).send('No post with that id');
@@ -56,8 +56,13 @@ export const addVideo = async (req, res) => {
 
     const playlist = await Playlist.findById(_id);
 
+    // Deduplication
+    const existed = playlist.videos.find((v) => v.video_id === video.video_id);
+    if (existed) {
+        return res.status(303).send("Already Exists.");
+    }
+
     playlist.videos.push(video);
-    // TODO: deduplicate
 
     const updatedPlaylist = await Playlist.findByIdAndUpdate(_id, playlist);
 

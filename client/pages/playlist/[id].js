@@ -9,7 +9,7 @@ const PlaylistVideos = ({ playlist }) => {
 }
 
 export async function getStaticPaths() {
-    const playlists = await fetchPlaylists();
+    const playlists = (await fetchPlaylists()) || [];
 
     const paths = playlists.map((playlist) => ({
         params: { 

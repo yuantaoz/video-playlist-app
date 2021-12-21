@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { serverUrl } from '../config';
+import { serverUrl, VIDEO_ALREADY_EXISTS } from '../config';
 
 /**
  * 
@@ -65,6 +65,10 @@ export const addVideo = async (id, video) => {
 
     } catch (error) {
         console.log(error);
+
+        if (error.response.status == VIDEO_ALREADY_EXISTS) {
+            return error.response.status;
+        }
     }
 }
 
