@@ -2,20 +2,28 @@
 
 Will update soon
 
-Instructions
+## Instructions
 
-(1) database
+#### (1) database
 
-  Create your own MongoDB instance
+  (a) Create your own MongoDB instance on https://www.mongodb.com/atlas/database
   
-  Add .env file to /server
+  (b) Find your database and click "Connect"
+  
+  (c) Choose "Connect Your Application" and copy the connection string
+  
+  (d) Edit .env file and add it to /server
+  
+  OR
+  
+  Contact me and I will give you my .env file
 
-(2) backend
+#### (2) backend
 
     cd server
     npm start
 
-(3) frontend
+#### (3) frontend
 
     cd client
     npm run dev
