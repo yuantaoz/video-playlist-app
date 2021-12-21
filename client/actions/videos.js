@@ -15,5 +15,20 @@ export const getVideos = async () => {
     } catch (error) {
         console.log(error);
     }
-    
+}
+
+
+/**
+ * 
+ * @returns {[JSON]} An array of all the video fetched
+ */
+ export const getVideosOnPage = async (page) => {
+    try {
+        const { data } = await axios.get(`${serverUrl}?page=${page}`);
+
+        return data.videos;
+        
+    } catch (error) {
+        console.log(error);
+    }
 }
