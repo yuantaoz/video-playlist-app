@@ -8,19 +8,8 @@ const PlaylistVideos = ({ playlist }) => {
     )
 }
 
-export async function getStaticPaths() {
-    const playlists = (await fetchPlaylists()) || [];
+export async function getServerSideProps({ params }) {
 
-    const paths = playlists.map((playlist) => ({
-        params: { 
-            id: playlist._id
-        },
-    }));
-
-    return { paths, fallback: false };
-}
-
-export async function getStaticProps({ params }) {
     const playlist = await getPlaylistInfo(params.id);
 
     return { props: { playlist }};
