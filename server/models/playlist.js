@@ -1,12 +1,5 @@
 import mongoose from 'mongoose';
-
-const videoSchema = mongoose.Schema({
-    video_id: { type: String, required: true },
-    title: { type: String },
-    views: { type: Number },
-    thumbnail_url: { type: String },
-    description: { type: String },
-});
+import { videoSchema } from './videoSchema.js';
 
 const playlistSchema = mongoose.Schema({
     name: {

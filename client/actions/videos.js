@@ -8,9 +8,9 @@ import { serverUrl } from '../config';
  */
 export const getVideos = async () => {
     try {
-        const { data } = await axios.get(serverUrl);
+        const data = await getVideosOnPage(1);
 
-        return data.videos;
+        return data;
         
     } catch (error) {
         console.log(error);
@@ -28,6 +28,24 @@ export const getVideos = async () => {
 
         return data.videos;
         
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+/**
+ * 
+ * @param {Number} pageNumber the page number in which query occurs
+ * @param {String} query the query
+ * @returns {[JSON]} An array of updated videos 
+ */
+export const searchVideos = async (page, query) => {
+    try {
+        const { data } = await axios.get(`${serverUrl}/search?page=${page}&query=${query}`);
+
+        return data.videos;
+
     } catch (error) {
         console.log(error);
     }

@@ -1,9 +1,10 @@
 import express from 'express';
 
-import { getVideos } from '../controller/videos.js';
+import { getVideos, searchVideos } from '../controller/videos.js';
 
 const router = express.Router();
 
 router.get('/', getVideos);
+router.get('/search', searchVideos);
 
 export default router;
