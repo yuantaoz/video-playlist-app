@@ -11,18 +11,18 @@ const PlaylistVideos = ({ videos, playlists }) => {
     )
 }
 
-export async function getStaticPaths() {
+// export async function getStaticPaths() {
 
-    const paths = pageNumbers.map((pageNumber) => ({
-        params: { 
-            page: pageNumber.toString()
-        },
-    }));
+//     const paths = pageNumbers.map((pageNumber) => ({
+//         params: { 
+//             page: pageNumber.toString()
+//         },
+//     }));
 
-    return { paths, fallback: false };
-}
+//     return { paths, fallback: false };
+// }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
 
     const videos = (await getVideosOnPage(params.page)) || [];
 
