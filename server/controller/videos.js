@@ -10,7 +10,8 @@ export const getVideos = async (req, res) => {
         const { data }  = await api.fetchVideosOnPage(page);
 
         await Video.deleteMany({});
-        data.videos.map(async (video) => {
+
+        const promises = data.videos.map(async (video) => {
             const newVideo = new Video({
                 "video_id": video.video_id,
                 "title": video.title,
@@ -22,6 +23,8 @@ export const getVideos = async (req, res) => {
 
             await newVideo.save();
         });
+
+        await Promise.all(promises);
 
         res.status(200).json(data);
     } catch (error) {
