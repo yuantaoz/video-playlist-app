@@ -10,7 +10,7 @@ export default function Home({ videos, playlists }) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const videos = (await getVideos()) || [];
 
   const playlists = (await fetchPlaylists()) || [];
