@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { createPlaylist } from '../../actions/playlists';
 
 
-const PlaylistsNav = (props) => {
+const PlaylistsNav = ({ playlists, setPlaylists }) => {
 
-    const [playlists, setPlaylists] = useState(props.playlists);
+    // const [playlists, setPlaylists] = useState(props.playlists);
 
     const [inputOpen, setInputOpen] = useState(false);
 
