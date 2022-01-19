@@ -45,8 +45,12 @@ export const searchVideos = async (req, res) => {
     queryStrings.map(() => {
         allQueries.push({ title: { $regex: String(query), $options: "i" }})
     });
-    
+
     const result = await Video.find({ page: page, $or: allQueries });
+
+    // const allQueries = "me";
+    
+    // const result = await Video.aggregate([{ $regexMatch: { page: page, title: { $regex: allQueries, $options: "i" }}}]);
 
     res.status(200).json({ videos: result });
 }
