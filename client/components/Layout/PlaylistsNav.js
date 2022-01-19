@@ -10,7 +10,7 @@ const PlaylistsNav = ({ playlists, setPlaylists }) => {
     const [inputOpen, setInputOpen] = useState(false);
 
     const handleCreate = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
         setInputOpen(true);
     }
